@@ -26,8 +26,11 @@ Speed
 Each data request or command is issued in a 100msec interval. After the 11 requests and commands are sent, a 300 msec wait time indicates the end of a cycle. 
 
 All numbers in HEX value !!
+
 disp->contr             response from controller (response depends on speed, current, voltage etc)
-    0ms 11 20           -> 00 00 20 (3 Bytes) 11 20 wheel rpm. 00 00 is the data, 20 = CRC 
+
+000ms 11 20           -> 00 00 20 (3 Bytes) 11 20 wheel rpm. 00 00 is the data, 20 = CRC 
+    
   100ms 16 0B 03 24                 (0 bytes) 03 24 for PAS3, 02 23 for PAS2, 0C 2D for PAS1, 00 21 for PAS0, 06 27 for WALK MODE
   200ms 11 08           -> 01       (1 byte)  11 08 Status request => 01 response is no error. Other numbers indicate certain errors
   300ms 11 31           -> 30 30    (2 bytes) 11 31 Voltage request => 30 Hex is 48 ??? does not compute maybe 48% ??
