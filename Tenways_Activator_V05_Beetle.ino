@@ -22,7 +22,6 @@ void loop() {
     if ((millis() - lastReceivedData) > NODATAINTERVAL) {
         sendFullCommand();
     }
-
 }
 
 void receiveAndResendData() {
@@ -49,7 +48,6 @@ void receiveAndResendData() {
 
 
 void sendFullCommand() {
-    // put your main code here, to run repeatedly:
     digitalWrite(LED_BUILTIN, HIGH);// switch on LED to indicate 
     Serial1.write(0x11);            // Request
     Serial1.write(0x20);            // Wheel RPM
