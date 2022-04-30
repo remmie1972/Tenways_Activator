@@ -1,4 +1,5 @@
-/*  This sketch is to program a Beetle Arduino to intercept
+/*  This sketch is to program a Beetle Arduino to intercept messages from the OLED display to the bike controller.
+    data communication between Display and controller is 1200 BAUD, 1 start bit, 8 data bits, 1 stop bit (8N1)
 
 */
 
