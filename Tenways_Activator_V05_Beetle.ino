@@ -70,7 +70,7 @@ void sendFullCommand() {
     Serial1.write(0x11);            // Battery Level
     delay(100);
     Serial1.write(0x16);            // set Command
-    Serial1.write(0x1F);            // Wheel circumference
+    Serial1.write(0x1F);            // Max RPM (thus SPEED!!) BD Hex = 189 * 2.18 mtr/rotation for a 700C-38 wheel * 60 / 1000 = 24.7 kph max speed
     if (!digitalRead(INPUTPIN)) {
         Serial1.write(byte(0x00));  // 00 for 25 and 32 kph, 1 for 40 kph
         Serial1.write(0xF2);        // BD is default = 25 kph for 700C wheel. increase for higher speed.            F2 for 32 kph, 2E for 40 kph
