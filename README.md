@@ -10,9 +10,9 @@ The datastream has a total length of 1400 msec and then repeats.
 4 commands are sent to the Controller :
 
 PAS level : 0, 1, 2, 3 or Walking mode.
-Wheel circumference  
+Max RPM 
 PAS Level again 
-Light On Of : 
+Light On Off
 
 Inbetween several requests for data from the controller are issued by the display :
 Voltage
@@ -41,7 +41,7 @@ disp->contr             response from controller (response depends on speed, cur
 
 500ms 11 11           -> 34 34    (2 bytes) 11 11 = GET Battery => 34 Hex = 52% (both bytes in the response contain the same data)
 
-600ms 16 1F 00 BD F2              (0 bytes) 00 BD = wheel circumference BD Hex = 189 cm ??  F2 = CRC (16+1F+00+BD=F2)
+600ms 16 1F 00 BD F2              (0 bytes) 00 BD = max rpm BD Hex = 189 rpm, F2 = CRC (16+1F+00+BD=F2)
 
 700ms 11 20           -> 00 00 20 (3 bytes) 11 20 = Speed request
 
@@ -55,4 +55,5 @@ disp->contr             response from controller (response depends on speed, cur
  
 1400ms sequence restarts
 
-this sequence does NOT change apart from the PAS level and the light. No dynamic alteration above 25 kph. That is done in the controller. So the configuration for top speed must be in the message or hardcoded in the controller
+this sequence does NOT change apart from the PAS level and the light. No dynamic alteration above 25 kph. That is done in the controller. 
+The configuration for top speed is in the 16 1F command. the value is BD hex which is 189 rpm. Wheel diameter for a 700C-38 tire is around 2.18 mtrs. this leads to a top speed of 189 * 2.18 * 60 / 1000 kph = 24.7 kph. For 32 kph top speed the vaslue can be raised to F2 with CRC 27 
